@@ -29,7 +29,7 @@ This repository contains the complete workflow applied to two distinct research 
 
 This workflow seamlessly connects five core scripts to guide you from data generation to final prediction, following a clear, sequential path.
 
-> **`Script 1: Molecule Generation & Sampling`**
+ **`Script 1: Molecule Generation & Sampling`**
 >
 > *Defines the problem, generates computational tasks*
 >
