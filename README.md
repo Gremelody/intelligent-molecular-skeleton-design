@@ -1,6 +1,4 @@
 # 🔬 intelligent-molecular-skeleton-design
-Data and code for programming effective pre-mediators in sulfur electrochemistry with intelligent molecular skeleton design
-#  DFT-ML-Workflow: A Full-Pipeline Solution from First-Principles to Machine Learning
 
 [![Python](https://img.shields.io/badge/Python-3.8%2B-blue.svg)](https://www.python.org/)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](https://opensource.org/licenses/MIT)
