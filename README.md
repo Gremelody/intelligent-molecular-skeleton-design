@@ -20,10 +20,6 @@ This repository provides a complete, modular workflow designed to integrate quan
 
 This workflow seamlessly connects five core scripts to guide you from data generation to final prediction, following a clear, sequential path.
 
-> **`DFT Calculations (User Provided)`**
->
-> `⬇️`
->
 > **`Script 1: Molecule Generation & Sampling`**
 >
 > *Defines the problem, generates computational tasks*
