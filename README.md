@@ -243,16 +243,16 @@ This workflow seamlessly connects five core scripts to guide you from data gener
 You can copy the entire content below into a file named `requirements.txt` and install all dependencies at once using the command: `pip install -r requirements.txt`.
 
 ```text
-pandas
-numpy
-matplotlib
-seaborn
-scikit-learn
-xgboost
-catboost
-lightgbm
-scikit-optimize
-shap
-umap-learn
-tqdm
-openpyxl
+pandas==2.2.2
+numpy==1.22.4
+matplotlib==3.8.4
+seaborn==0.13.2
+scikit-learn==1.6.1
+xgboost==3.0.2
+catboost==1.2.7
+lightgbm==4.6.0
+scikit-optimize==0.10.2
+shap==0.48.0
+umap-learn==0.5.7
+tqdm==4.67.1
+openpyxl==3.1.5
