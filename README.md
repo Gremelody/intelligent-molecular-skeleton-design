@@ -232,36 +232,26 @@ This workflow seamlessly connects five core scripts to guide you from data gener
 ## 💻 How to Use
 
 1.  **Environment Setup**:
-    Clone this repository and install all required dependencies from `requirements.txt`.
+    Download the scripts and `requirements.txt` file from the desired project folder (e.g., `CPyr/`). Install all dependencies.
     ```bash
-    git clone [https://github.com/Gremelody/intelligent-molecular-skeleton-design.git](https://github.com/Gremelody/intelligent-molecular-skeleton-design.git)
-    cd intelligent-molecular-skeleton-design
     pip install -r requirements.txt
     ```
 
-2.  **Navigate to a Project**:
-    Choose the project you want to work with by navigating into the corresponding directory.
-    ```bash
-    # For the main dichloropyrimidine project
-    cd CPyr/
-    ```
+2.  **Workflow Execution**:
+    * **Step 1: Generate Molecular Library**
+        * Run `Molecule Generation & Sampling.ipynb` to produce a list of representative molecules (`representative_sample.xlsx`).
+        * Perform your own quantum chemistry calculations on this library and compile the results with feature descriptors into a new master Excel file.
 
-3.  **Prepare Data**:
-    * Use the code in `Molecule Generation & Sampling.ipynb` (**Script 1**) to define your chemical problem and generate a list of representative molecules for DFT calculations.
-    * After completing your DFT calculations, organize the results and your engineered features into an Excel spreadsheet. This will be the input for the next step.
+    * **Step 2: Engineer Features**
+        * Run `Feature Engineering.ipynb` on your master Excel file to generate the optimal feature set (`final_selected_dataset_...xlsx`).
 
-4.  **Execute the Notebooks Sequentially**:
+    * **Step 3: Train and Predict**
+        * Open and run the cells in `Tree_stacking.ipynb` sequentially. This notebook performs:
+            * **Hyperparameter Optimization** (Script 3) on the feature-engineered data.
+            * **Stacking Ensemble Evaluation** (Script 4) to build and validate the final model.
+            * **Prediction** (Script 5) on new, unseen data.
 
-    * **Step 1: Feature Engineering**
-        * Open and run all cells in `Feature Engineering.ipynb` (**Script 2**). This will perform feature selection on your raw database and generate the optimal feature set.
-
-    * **Step 2: Model Training and Prediction**
-        * Open `Tree_stacking.ipynb`. This notebook contains the final three stages of the workflow.
-        * Run the cells corresponding to **Script 3 (Hyperparameter Optimization)** to find the best hyperparameters for your models.
-        * Continue running the cells for **Script 4 (Stacking Ensemble & Evaluation)** to build and evaluate the final ensemble model.
-        * Finally, run the cells for **Script 5 (Prediction)**, making sure to configure the path to your own unseen data file, to get the final predictions.
-
-    ⚠️ **Important Note**: The cells within `Tree_stacking.ipynb` (Scripts 3, 4, and 5) are designed to be run sequentially in the same session, as they communicate through in-memory variables (like `grid_searches` and `global_best_meta_learner`).
+    ⚠️ **Important Note**: Scripts 3, 4, and 5 are located within `Tree_stacking.ipynb` and must be run in the same session to pass variables (like optimized models) in memory.
 
 ## 📦 Requirements (`requirements.txt`)
 
