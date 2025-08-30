@@ -6,6 +6,15 @@
 
 This repository provides a complete, modular workflow designed to integrate quantum chemistry with modern machine learning techniques to accelerate research in materials science and computational chemistry. The pipeline covers the entire process from high-throughput virtual library construction and representative sampling, to sophisticated feature engineering, hyperparameter optimization, and finally to the construction, evaluation, interpretation, and application of a high-performance stacking ensemble model.
 
+## 📂 Project Structure and Focus
+
+This repository contains the complete workflow applied to two distinct research projects. The scripts are identical in function but differ in their specific configurations.
+
+* **`CPyr/`**: This directory contains the **main body of work**, focusing on the **dichloropyrimidine** molecular system. The descriptions and details throughout this README primarily refer to this project.
+* **`1,4-Benzoquinone/`**: This directory contains a **secondary application** of the same workflow to the **1,4-Benzoquinone** system. It serves as an additional example of the workflow's versatility.
+
+---
+
 ## 🚀 Key Features
 
 * **End-to-End Pipeline** 🛣️: Offers a complete solution from problem definition to final prediction, covering all critical stages of a scientific research task.
@@ -76,16 +85,19 @@ This workflow seamlessly connects five core scripts to guide you from data gener
     * **UMAP Visualization Plot**: An interactive plot window showing the distribution of sampled points (red) within the entire chemical space (gray).
     * **📝 Output File Format Explanation**:
         * The generated molecule is represented by a string of Arabic numerals (e.g., `"216"`).
-        * The **position** of a numeral corresponds to the **site** on the scaffold (e.g., the first digit is for site 1, the second for site 2, and the third for site 3).
-        * The **numeral itself** represents the functional group at that site. For this specific project, the mapping is as follows:
-            * `1`: -H
-            * `2`: -Me
-            * `3`: -Et
-            * `4`: -NH2
-            * `5`: -OCH3
-            * `6`: -CF3
-            * `7`: -CN
-        * **Example**: A molecule represented as `"216"` means Site 1 is substituted with `-Me`, Site 2 with `-H`, and Site 3 with `-CF3`.
+        * The **position** of a numeral corresponds to the **site** on the scaffold (e.g., the first digit is for site 1, the second for site 2, etc.).
+        * The **numeral itself** represents the functional group at that site. The mapping varies by project:
+            * For the primary **Dichloropyrimidine** project (`CPyr/`):
+                * `1`: -H
+                * `2`: -Me
+                * `3`: -Et
+                * `4`: -NH2
+                * `5`: -OCH3
+                * `6`: -CF3
+                * `7`: -CN
+            * For the secondary **1,4-Benzoquinone** project:
+                * `1` to `6` correspond to -F, -Cl, -H, -Me, -OCH3, -NH2.
+        * **Example (Dichloropyrimidine)**: A molecule represented as `"216"` means Site 1 is substituted with `-Me`, Site 2 with `-H`, and Site 3 with `-CF3`.
 
 * **💡 Highlights**:
     * **Canonicalization for Deduplication**: Accurately removes duplicate structures by calculating a molecule's "canonical form."
@@ -95,7 +107,7 @@ This workflow seamlessly connects five core scripts to guide you from data gener
 
 ### 📜 Script 2: Feature Engineering
 
-* **🎯 Purpose**:
+* **🎯 Function**:
     * Selects the optimal feature subset from an initial database created by the user (containing DFT results and various descriptors).
     * **Stage 1 (Filter)**: Removes redundant features with high linear correlation using the Pearson correlation coefficient.
     * **Stage 2 (Embedded)**: Performs a coarse selection using a SHAP-based Random Forest model to quickly eliminate features with low predictive power.
@@ -115,7 +127,7 @@ This workflow seamlessly connects five core scripts to guide you from data gener
     * `EARLY_STOPPING_PATIENCE`: In Stage 3, stops the iteration if model performance does not improve for a specified number of consecutive steps, preventing overfitting.
     * `PERFORMANCE_METRIC`: The performance metric for Stage 3, choose between `'r2'` (higher is better) or `'mae'` (lower is better).
 
-* **📄 Outputs (Files & Information)**:
+* **📄 Outputs**:
     * **Console Output**: Real-time logs for each stage, including lists of dropped features and changes in the feature count.
     * `feature_engineering_summary_...xlsx`: A summary report clearly showing the number of features removed at each stage.
     * `final_selected_dataset_...xlsx`: **(Core Output)** The data file containing the optimal feature set and the target variable.
@@ -130,7 +142,7 @@ This workflow seamlessly connects five core scripts to guide you from data gener
 
 ### 📜 Script 3: Hyperparameter Optimization
 
-* **🎯 Purpose**:
+* **🎯 Function**:
     * Uses the optimal dataset produced by the feature engineering script.
     * Performs efficient hyperparameter tuning for multiple mainstream machine learning models (e.g., XGBoost, Random Forest, LightGBM).
     * Utilizes the Bayesian Optimization algorithm to intelligently search for the hyperparameter combination that maximizes model performance (R² score).
@@ -147,7 +159,7 @@ This workflow seamlessly connects five core scripts to guide you from data gener
     * `N_ITER_BAYESIAN`: The number of iterations for Bayesian Optimization. A higher value leads to a more thorough search but takes longer.
     * `parameter_XGBR` (and others): (Advanced) Dictionaries for fine-tuning the hyperparameter search space for specific models.
 
-* **📄 Outputs (Files & Information)**:
+* **📄 Outputs**:
     * **Console Output**:
         * A real-time progress bar for each model's tuning process.
         * Upon completion for each model, a clear printout of the **best cross-validated R² score** and the corresponding **optimal hyperparameter combination**.
@@ -162,7 +174,7 @@ This workflow seamlessly connects five core scripts to guide you from data gener
 
 ### 📜 Script 4: Stacking Ensemble & Evaluation
 
-* **🎯 Purpose**:
+* **🎯 Function**:
     * Constructs a powerful Stacking Ensemble model using the optimized hyperparameters from the previous step.
     * Generates Out-of-Fold (OOF) predictions from base models via cross-validation and uses them as features to train a meta-learner.
     * Also uses Bayesian Optimization to find the best hyperparameters for the meta-learner.
@@ -182,7 +194,7 @@ This workflow seamlessly connects five core scripts to guide you from data gener
     * `N_FEATURES_TO_PLOT`: The number of top features to display in the final feature importance bar chart.
     * `PLOT_SHAP_SWARM_PLOT`: A boolean to enable/disable the generation of the SHAP swarm plot, which is informative but can be time-consuming.
 
-* **📄 Outputs (Files & Information)**:
+* **📄 Outputs**:
     * **Console Output**: Prints the evaluation results for each seed and a final average performance report across all seeds.
     * `unified_feature_importances_...png`: **(Core Output)** The bar chart for the Two-Level Weighted SHAP global feature importances.
     * `shap_summary_plot_...png`: **(Core Output)** The SHAP summary (swarm) plot, showing the impact of each feature on the model's output.
@@ -198,7 +210,7 @@ This workflow seamlessly connects five core scripts to guide you from data gener
 
 ### 📜 Script 5: Prediction
 
-* **🎯 Purpose**:
+* **🎯 Function**:
     * Loads and applies the final trained Stacking Ensemble model.
     * Makes predictions on new, unseen external datasets.
     * Supports two modes: quickly reusing the model already trained by the evaluation script, or retraining a final model on the entire training set before prediction.
@@ -215,7 +227,7 @@ This workflow seamlessly connects five core scripts to guide you from data gener
     * `ENABLED_BASE_LEARNERS`: **Must** be consistent with Scripts 3 and 4.
     * `PREDICTION_OUTPUT_FILENAME_PREFIX`: The prefix for the output prediction file.
 
-* **📄 Outputs (Files & Information)**:
+* **📄 Outputs**:
     * **Console Output**: Prints status messages for model loading, data processing, and the prediction process.
     * `unknown_predictions_...xlsx` (or `.csv`): **(Core Output)** Contains the predictions for each sample in the unknown dataset. The file includes not only the final Stacking prediction but also the individual predictions from each base model for analysis.
 
@@ -228,16 +240,23 @@ This workflow seamlessly connects five core scripts to guide you from data gener
 1.  **Environment Setup**:
     Clone this repository and install all required dependencies from `requirements.txt`.
     ```bash
-    git clone [https://github.com/your-username/DFT-ML-Workflow.git](https://github.com/your-username/DFT-ML-Workflow.git)
-    cd DFT-ML-Workflow
+    git clone [https://github.com/your-username/intelligent-molecular-skeleton-design.git](https://github.com/your-username/intelligent-molecular-skeleton-design.git)
+    cd intelligent-molecular-skeleton-design
     pip install -r requirements.txt
     ```
 
-2.  **Prepare Data**:
+2.  **Navigate to a Project**:
+    Choose the project you want to work with by navigating into the corresponding directory.
+    ```bash
+    # For the main dichloropyrimidine project
+    cd CPyr/
+    ```
+
+3.  **Prepare Data**:
     * Use the code in `Molecule Generation & Sampling.ipynb` (**Script 1**) to define your chemical problem and generate a list of representative molecules for DFT calculations.
     * After completing your DFT calculations, organize the results and your engineered features into an Excel spreadsheet. This will be the input for the next step.
 
-3.  **Execute the Notebooks Sequentially**:
+4.  **Execute the Notebooks Sequentially**:
 
     * **Step 1: Feature Engineering**
         * Open and run all cells in `Feature Engineering.ipynb` (**Script 2**). This will perform feature selection on your raw database and generate the optimal feature set.
