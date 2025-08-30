@@ -10,8 +10,8 @@ This repository provides a complete, modular workflow designed to integrate quan
 
 This repository contains the complete workflow applied to two distinct research projects. The scripts are identical in function but differ in their specific configurations.
 
-* **`CPyr/`**: This directory contains the **main body of work**, focusing on the **dichloropyrimidine** molecular system. The descriptions and details throughout this README primarily refer to this project.
-* **`1,4-Benzoquinone/`**: This directory contains a **secondary application** of the same workflow to the **1,4-Benzoquinone** system. It serves as another example validating the universality of this machine learning workflow and molecular scaffold design paradigm.
+* **`CPyr/`**: This directory contains the **main body of work**, focusing on the **dichloropyrimidine** molecular system serve as addictives in Li-S batteries. The descriptions and details throughout this README primarily refer to this project.
+* **`1,4-Benzoquinone/`**: This directory contains a **secondary application** of the same workflow to the **1,4-Benzoquinone** system serve as addictives in Li-CO2 batteries. It serves as another example validating the universality of this machine learning workflow and molecular scaffold design paradigm.
 
 ---
 
