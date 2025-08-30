@@ -74,10 +74,18 @@ This workflow seamlessly connects five core scripts to guide you from data gener
     * `all_possible_molecules.xlsx`: The complete database containing all unique molecular combinations.
     * `representative_sample.xlsx`: The representative subset of molecules selected by the hybrid sampling strategy.
     * **UMAP Visualization Plot**: An interactive plot window showing the distribution of sampled points (red) within the entire chemical space (gray).
-    * **Output Format Note**: In the output `.xlsx` files, each molecule is represented by a sequence of numbers (e.g., `173`).
-        * **Arabic numerals** (`1`, `7`, `3`, etc.) represent the different types of functional groups.
-        * The **position of the number** corresponds to the site on the molecule (e.g., the first number for site 1, the second for site 2, etc.).
-        * For example, the molecule `173` signifies that site 1 is substituted with functional group 1, site 2 with group 7, and site 3 with group 3.
+    * **📝 Output File Format Explanation**:
+        * The generated molecule is represented by a string of Arabic numerals (e.g., `"216"`).
+        * The **position** of a numeral corresponds to the **site** on the scaffold (e.g., the first digit is for site 1, the second for site 2, and the third for site 3).
+        * The **numeral itself** represents the functional group at that site. For this specific project, the mapping is as follows:
+            * `1`: -H
+            * `2`: -Me
+            * `3`: -Et
+            * `4`: -NH2
+            * `5`: -OCH3
+            * `6`: -CF3
+            * `7`: -CN
+        * **Example**: A molecule represented as `"216"` means Site 1 is substituted with `-Me`, Site 2 with `-H`, and Site 3 with `-CF3`.
 
 * **💡 Highlights**:
     * **Canonicalization for Deduplication**: Accurately removes duplicate structures by calculating a molecule's "canonical form."
