@@ -1,2 +1,222 @@
-# intelligent-molecular-skeleton-design
+#🔬 intelligent-molecular-skeleton-design
 Data and code for programming effective pre-mediators in sulfur electrochemistry with intelligent molecular skeleton design
+#  DFT-ML-Workflow: A Full-Pipeline Solution from First-Principles to Machine Learning
+
+[![Python](https://img.shields.io/badge/Python-3.8%2B-blue.svg)](https://www.python.org/)
+[![License](https://img.shields.io/badge/license-MIT-green.svg)](https://opensource.org/licenses/MIT)
+[![Status](https://img.shields.io/badge/status-active-brightgreen.svg)]()
+
+This repository provides a complete, modular workflow designed to integrate first-principles calculations (DFT) with modern machine learning techniques to accelerate research in materials science and computational chemistry. The pipeline covers the entire process from high-throughput virtual library construction and representative sampling, to sophisticated feature engineering, hyperparameter optimization, and finally to the construction, evaluation, interpretation, and application of a high-performance stacking ensemble model.
+
+## 🚀 Key Features
+
+* **End-to-End Pipeline** 🛣️: Offers a complete solution from problem definition to final prediction, covering all critical stages of a scientific research task.
+* **Intelligent Library Sampling** 🧬: Employs symmetry analysis and an innovative hybrid sampling strategy to efficiently select the most informative and representative subset from a vast combinatorial space, saving significant resources on subsequent DFT calculations.
+* **Advanced Feature Engineering** 🛠️: Utilizes a three-stage "Filter-Embedded-Wrapper" strategy, combining Pearson correlation, SHAP feature importance, and iterative wrapper-based selection to precisely identify the optimal feature set.
+* **Efficient Hyperparameter Optimization** ⚡: Leverages the Bayesian Optimization algorithm to intelligently and efficiently search for the best hyperparameter combinations, far surpassing traditional grid or random search methods.
+* **Powerful Stacking Ensemble** 🧠: Integrates multiple high-performance base models (e.g., XGBoost, LightGBM) and trains a meta-learner to optimally combine their predictions, significantly boosting predictive accuracy and generalization.
+* **Unique Model Interpretability** 📊: Features a novel **"Two-Level Weighted SHAP Analysis"** method, which provides a globally unified and highly reliable feature importance ranking by considering the performance of both base models and the final ensemble.
+* **Reproducibility & Robustness** 🔁: Ensures complete reproducibility of results through global random seeds and assesses model stability and robustness via repeated cross-validation.
+
+## 🗺️ The Workflow
+
+This workflow seamlessly connects five core scripts to guide you from data generation to final prediction.
+
+**`DFT Calculations (User Provided)`**
+`➡️`
+**`Script 1: Molecule Generation & Sampling`** `(Defines the problem, generates computational tasks)`
+`➡️`
+**`Script 2: Feature Engineering`** `(Builds the initial database from DFT results, selects optimal features)`
+`➡️`
+**`Script 3: Hyperparameter Optimization`** `(Finds the optimal "operating state" for each base model)`
+`➡️`
+**`Script 4: Stacking Ensemble & Evaluation`** `(Assembles the "expert team" and evaluates the final model)`
+`➡️`
+**`Script 5: Prediction`** `(Applies the trained model to solve real-world problems)`
+
+---
+
+### 📜 Script 1: Molecular Library Generation & Representative Sampling
+
+* **🎯 Purpose**:
+    * Generates all possible molecular combinations based on user-defined substitution sites and functional groups.
+    * Automatically identifies and eliminates duplicate structures using symmetry rules to ensure library uniqueness.
+    * Executes an advanced hybrid sampling strategy to select a manageable and highly representative subset for DFT calculations.
+    * Provides UMAP dimensionality reduction for intuitive visualization of the sampling coverage and uniformity.
+
+* **▶️ Usage**:
+    1.  Configure the core molecular structure parameters in the `User Configuration` section.
+    2.  Run the script to generate Excel files and a UMAP visualization plot.
+
+* **⚙️ Tunable Parameters**:
+    * `NUM_SITES`: **(Required)** The total number of substitutable sites on the molecular scaffold.
+    * `NUM_FUNCTIONAL_GROUPS`: **(Required)** The total number of available functional groups or building blocks.
+    * `SYMMETRY_STRING`: **(Key)** Defines site symmetry. The format is flexible, e.g., `"1,3"` means sites 1 and 3 are equivalent; `"1,4; 2,3"` means 1 is equivalent to 4 AND 2 is equivalent to 3. Leave empty for no symmetry.
+    * `SAMPLE_FRACTION`: The proportion (0.0 to 1.0) of the total library to sample, e.g., `0.1` for 10%.
+    * `RANDOM_SEED`: A seed for random processes to ensure the reproducibility of sampling and visualization.
+
+* **📄 Outputs (Files & Information)**:
+    * **Console Output**: Prints configuration details, the total number of unique molecules found, statistics for each molecular pattern, and the sampling target.
+    * `all_possible_molecules.xlsx`: The complete database containing all unique molecular combinations.
+    * `representative_sample.xlsx`: The representative subset of molecules selected via the hybrid sampling strategy.
+    * **UMAP Visualization**: A pop-up window displaying the distribution of sampled points (red) within the total chemical space (gray).
+
+* **💡 Highlights**:
+    * **Canonicalization for Deduplication**: Accurately removes duplicate structures arising from symmetry by calculating a molecule's "Canonical Form".
+    * **Hybrid Sampling Strategy**: Rigorously pursues component balance, achieving an optimal trade-off between diversity and representativeness.
+
+---
+
+### 📜 Script 2: Feature Engineering
+
+* **🎯 Purpose**:
+    * Selects the optimal feature subset from an initial database created by the user (containing DFT results and various descriptors).
+    * **Stage 1 (Filter)**: Removes redundant features with high linear correlation using the Pearson correlation coefficient.
+    * **Stage 2 (Embedded)**: Performs a coarse selection using a SHAP-based Random Forest model to quickly eliminate features with low predictive power.
+    * **Stage 3 (Wrapper)**: Employs an iterative backward elimination strategy, removing the least important feature one by one while monitoring model performance with cross-validation to find the best feature combination.
+
+* **▶️ Usage**:
+    1.  Prepare an Excel file containing all raw features and the target variable.
+    2.  Configure the input/output paths and algorithm parameters in the `Configuration Section`.
+    3.  Run the script to generate a series of result files in the specified output directory.
+
+* **⚙️ Tunable Parameters**:
+    * `INPUT_FILE`: **(Required)** The filename of your raw data Excel file.
+    * `OUTPUT_DIR`: **(Required)** The name of the folder where all output results will be saved.
+    * `FEATURE_COLUMN_SLICE` / `TARGET_COLUMN_INDEX`: **(Key)** Defines the location of your features and target in the Excel file, e.g., `'1:-2'` means features are from the second column to the second-to-last.
+    * `PEARSON_CORR_THRESHOLD`: The correlation threshold for Stage 1; a lower value results in more aggressive filtering.
+    * `SHAP_COARSE_SELECTION_PERCENT`: The percentage of top features to retain after the SHAP coarse selection in Stage 2.
+    * `EARLY_STOPPING_PATIENCE`: In Stage 3, stops the iteration if model performance does not improve for a specified number of consecutive steps, preventing overfitting.
+    * `PERFORMANCE_METRIC`: The performance metric for Stage 3, choose between `'r2'` (higher is better) or `'mae'` (lower is better).
+
+* **📄 Outputs (Files & Information)**:
+    * **Console Output**: Real-time logs for each stage, including lists of dropped features and changes in the feature count.
+    * `feature_engineering_summary_...xlsx`: A summary report clearly showing the number of features removed at each stage.
+    * `final_selected_dataset_...xlsx`: **(Core Output)** The data file containing the optimal feature set and the target variable.
+    * `...correlation_matrix_...xlsx`: Feature correlation matrices from different stages for analysis.
+    * `performance_iteration_history_...xlsx`: A detailed log from Stage 3, recording the model's performance after each feature removal.
+
+* **💡 Highlights**:
+    * **Three-Stage Selection**: A rigorous process that combines the advantages of filter, embedded, and wrapper methods for highly reliable results.
+    * **SHAP-Driven**: The core selection process is driven by SHAP values, ensuring accuracy and interpretability.
+
+---
+
+### 📜 Script 3: Hyperparameter Optimization
+
+* **🎯 Purpose**:
+    * Uses the optimal dataset produced by the feature engineering script.
+    * Performs efficient hyperparameter tuning for multiple mainstream machine learning models (e.g., XGBoost, Random Forest, LightGBM).
+    * Utilizes the Bayesian Optimization algorithm to intelligently search for the hyperparameter combination that maximizes model performance (R² score).
+
+* **▶️ Usage**:
+    1.  Use the `final_selected_dataset_...xlsx` file from Script 2 as input.
+    2.  Select the models to optimize and set relevant parameters in the `User Configuration` section.
+    3.  Run the script. Results will be printed to the console, and the key variable `grid_searches` will be stored in memory for the next script.
+
+* **⚙️ Tunable Parameters**:
+    * `EXCEL_FILE_PATH`: **(Required)** The input file, which should be the output from Script 2.
+    * `X_COLS_SLICE` / `Y_COLS_SLICE`: **(Required)** Adjust the slicing rules based on the input file's structure.
+    * `ENABLED_MODELS`: **(Key)** Select the models to be optimized by commenting/uncommenting lines in this list.
+    * `N_ITER_BAYESIAN`: The number of iterations for Bayesian Optimization. A higher value leads to a more thorough search but takes longer.
+    * `parameter_XGBR` (and others): (Advanced) Dictionaries for fine-tuning the hyperparameter search space for specific models.
+
+* **📄 Outputs (Files & Information)**:
+    * **Console Output**:
+        * A real-time progress bar for each model's tuning process.
+        * Upon completion for each model, a clear printout of the **best cross-validated R² score** and the corresponding **optimal hyperparameter combination**.
+        * A final summary of results for all models.
+    * **In-Memory Variable**: (Important) Creates a dictionary variable named `grid_searches`, which contains the optimization results and the best estimator instance for each model. This variable is directly used by Script 4.
+
+* **💡 Highlights**:
+    * **Bayesian Optimization**: More intelligent and faster to converge than traditional grid search, finding better hyperparameters with less computational cost.
+    * **Highly Modular**: Easily enable or disable different models to compare their performance.
+
+---
+
+### 📜 Script 4: Stacking Ensemble & Evaluation
+
+* **🎯 Purpose**:
+    * Constructs a powerful Stacking Ensemble model using the optimized hyperparameters from the previous step.
+    * Generates Out-of-Fold (OOF) predictions from base models via cross-validation and uses them as features to train a meta-learner.
+    * Also uses Bayesian Optimization to find the best hyperparameters for the meta-learner.
+    * Performs repeated cross-validation with multiple random seeds to comprehensively and fairly evaluate the performance and robustness of the final Stacking model and each base model.
+    * Calculates and visualizes the **Two-Level Weighted SHAP feature importance** for a unified model interpretation.
+
+* **▶️ Usage**:
+    1.  This script should be run directly after Script 3 in the same session/environment to inherit the optimized model variables.
+    2.  Configure the evaluation and plotting parameters in the `User Configuration` section.
+    3.  Run the script to generate detailed performance reports, visualizations, and data files.
+
+* **⚙️ Tunable Parameters**:
+    * `ENABLED_BASE_LEARNERS`: **(Key)** Selects the base models to be included in the Stacking ensemble. **MUST** be consistent with the models enabled in Script 3.
+    * `N_SEEDS_FOR_EVALUATION`: The number of repetitions (seeds) for the evaluation, used to test model robustness. A value of 3-5 is recommended.
+    * `N_SPLITS_OUTER_CV`: The number of folds (k) for the outer cross-validation.
+    * `META_LEARNER_N_ITER_BAYESIAN`: The number of Bayesian Optimization iterations for the meta-learner.
+    * `N_FEATURES_TO_PLOT`: The number of top features to display in the final feature importance bar chart.
+    * `PLOT_SHAP_SWARM_PLOT`: A boolean to enable/disable the generation of the SHAP swarm plot, which is informative but can be time-consuming.
+
+* **📄 Outputs (Files & Information)**:
+    * **Console Output**: Prints the evaluation results for each seed and a final average performance report across all seeds.
+    * `unified_feature_importances_...png`: **(Core Output)** The bar chart for the Two-Level Weighted SHAP global feature importances.
+    * `shap_summary_plot_...png`: **(Core Output)** The SHAP summary (swarm) plot, showing the impact of each feature on the model's output.
+    * `cv_predictions_pivoted_...xlsx`: Detailed prediction logs, containing the true value and the predicted value from each model for every sample in each fold and seed.
+    * `cv_model_scores_per_fold_...xlsx`: Detailed performance logs, containing the R² and RMSE scores for each model in each fold and seed.
+    * `shap_swarm_data_...xlsx`: The raw data used to generate the SHAP plots, allowing for deeper analysis.
+
+* **💡 Highlights**:
+    * **Stacking Ensemble**: Combines the strengths of multiple powerful learners to typically achieve higher predictive accuracy than any single model.
+    * **Two-Level Weighted SHAP Analysis**: A novel weighting scheme that considers the performance of both the base models and the ensemble in each cross-validation fold, yielding a more stable and trustworthy feature importance ranking.
+
+---
+
+### 📜 Script 5: Prediction
+
+* **🎯 Purpose**:
+    * Loads and applies the final trained Stacking Ensemble model.
+    * Makes predictions on new, unseen external datasets.
+    * Supports two modes: quickly reusing the model already trained by the evaluation script, or retraining a final model on the entire training set before prediction.
+
+* **▶️ Usage**:
+    1.  This script should be run after Script 4 to inherit the trained `global_best_meta_learner`.
+    2.  Configure the path to the prediction file in the `User Configuration` section.
+    3.  Run the script to generate an Excel file with the detailed prediction results.
+
+* **⚙️ Tunable Parameters**:
+    * `UNKNOWN_DATA_FILE`: **(Required)** The filename of the Excel file containing the data to be predicted.
+    * `UNKNOWN_DATA_FILE_COLUMN_RANGE`: **(Key)** Defines how to extract feature columns from the prediction file. **Must ensure the number and order of extracted features are identical to the training set.**
+    * `REUSE_PRETRAINED_STACKING_MODEL`: **(Key)** Set to `True` (recommended) to directly use the model trained in Script 4 for fast predictions. Set to `False` to retrain a new final model.
+    * `ENABLED_BASE_LEARNERS`: **Must** be consistent with Scripts 3 and 4.
+    * `PREDICTION_OUTPUT_FILENAME_PREFIX`: The prefix for the output prediction file.
+
+* **📄 Outputs (Files & Information)**:
+    * **Console Output**: Prints status messages for model loading, data processing, and the prediction process.
+    * `unknown_predictions_...xlsx` (or `.csv`): **(Core Output)** Contains the predictions for each sample in the unknown dataset. The file includes not only the final Stacking prediction but also the individual predictions from each base model for analysis.
+
+* **💡 Highlights**:
+    * **One-Click Prediction**: A highly automated process; the user only needs to provide the new data file to get predictions.
+    * **Column Alignment Mechanism**: Robustly handles the new data by automatically aligning its columns with the training data, preventing common errors caused by column name mismatches.
+
+## 💻 How to Use
+
+1.  **Environment Setup**:
+    Clone this repository and install all required dependencies from `requirements.txt`.
+    ```bash
+    git clone [https://github.com/your-username/DFT-ML-Workflow.git](https://github.com/your-username/DFT-ML-Workflow.git)
+    cd DFT-ML-Workflow
+    pip install -r requirements.txt
+    ```
+
+2.  **Data Preparation**:
+    * Use **Script 1** to define your chemical problem and generate a representative list of molecules for DFT calculations.
+    * After completing your DFT calculations, organize the results and your designed feature descriptors into a single Excel file to be used as input for **Script 2**.
+
+3.  **Execute Scripts Sequentially**:
+    * Run **Script 2** to perform feature engineering on your raw data to get the optimal feature set.
+    * Run **Script 3** on the output from the previous step to find the optimal hyperparameters for all candidate models.
+    * Run **Script 4** to build and evaluate the final Stacking Ensemble model.
+    * Run **Script 5** with your own unseen data file to make final predictions.
+
+    ⚠️ **Important Note**: Scripts 3, 4, and 5 are designed to be run sequentially within the same Python session (e.g., a Jupyter Notebook or an IPython environment), as they communicate through in-memory variables (like `grid_searches`).
+
+## 📦 Dependencies (requirements.txt)
