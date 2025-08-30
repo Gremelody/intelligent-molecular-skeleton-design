@@ -74,7 +74,7 @@ This workflow seamlessly connects five core scripts to guide you from data gener
     * `all_possible_molecules.xlsx`: The complete database containing all unique molecular combinations.
     * `representative_sample.xlsx`: The representative subset of molecules selected by the hybrid sampling strategy.
     * **UMAP Visualization Plot**: An interactive plot window showing the distribution of sampled points (red) within the entire chemical space (gray).
-    * **💡 Output Format Note**: In the output `.xlsx` files, each molecule is represented by a sequence of numbers (e.g., `173`).
+    * **Output Format Note**: In the output `.xlsx` files, each molecule is represented by a sequence of numbers (e.g., `173`).
         * **Arabic numerals** (`1`, `7`, `3`, etc.) represent the different types of functional groups.
         * The **position of the number** corresponds to the site on the molecule (e.g., the first number for site 1, the second for site 2, etc.).
         * For example, the molecule `173` signifies that site 1 is substituted with functional group 1, site 2 with group 7, and site 3 with group 3.
