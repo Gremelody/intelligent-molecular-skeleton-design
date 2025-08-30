@@ -217,4 +217,21 @@ This workflow seamlessly connects five core scripts to guide you from data gener
 
     ⚠️ **Important Note**: Scripts 3, 4, and 5 are designed to be run sequentially within the same Python session (e.g., a Jupyter Notebook or an IPython environment), as they communicate through in-memory variables (like `grid_searches`).
 
-## 📦 Dependencies (requirements.txt)
+## 📦 Requirements (`requirements.txt`)
+
+You can copy the entire content below into a file named `requirements.txt` and install all dependencies at once using the command: `pip install -r requirements.txt`.
+
+```text
+pandas
+numpy
+matplotlib
+seaborn
+scikit-learn
+xgboost
+catboost
+lightgbm
+scikit-optimize
+shap
+umap-learn
+tqdm
+openpyxl
