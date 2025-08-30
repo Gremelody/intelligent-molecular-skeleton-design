@@ -234,7 +234,7 @@ This workflow seamlessly connects five core scripts to guide you from data gener
 1.  **Environment Setup**:
     Clone this repository and install all required dependencies from `requirements.txt`.
     ```bash
-    git clone [https://github.com/your-username/intelligent-molecular-skeleton-design.git](https://github.com/your-username/intelligent-molecular-skeleton-design.git)
+    git clone [https://github.com/Gremelody/intelligent-molecular-skeleton-design.git](https://github.com/Gremelody/intelligent-molecular-skeleton-design.git)
     cd intelligent-molecular-skeleton-design
     pip install -r requirements.txt
     ```
