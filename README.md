@@ -18,19 +18,24 @@ This repository provides a complete, modular workflow designed to integrate quan
 
 ## 🗺️ The Workflow
 
-This workflow seamlessly connects five core scripts to guide you from data generation to final prediction.
+This workflow seamlessly connects five core scripts to guide you from data generation to final prediction, following a clear, sequential path.
 
 **`DFT Calculations (User Provided)`**
-`➡️`
-**`Script 1: Molecule Generation & Sampling`** `(Defines the problem, generates computational tasks)`
-`➡️`
-**`Script 2: Feature Engineering`** `(Builds the initial database from DFT results, selects optimal features)`
-`➡️`
-**`Script 3: Hyperparameter Optimization`** `(Finds the optimal "operating state" for each base model)`
-`➡️`
-**`Script 4: Stacking Ensemble & Evaluation`** `(Assembles the "expert team" and evaluates the final model)`
-`➡️`
-**`Script 5: Prediction`** `(Applies the trained model to solve real-world problems)`
+`⬇️`
+**`Script 1: Molecule Generation & Sampling`**
+*Defines the problem, generates computational tasks*
+`⬇️`
+**`Script 2: Feature Engineering`**
+*Builds the initial database from DFT results, selects optimal features*
+`⬇️`
+**`Script 3: Hyperparameter Optimization`**
+*Finds the optimal "operating state" for each base model*
+`⬇️`
+**`Script 4: Stacking Ensemble & Evaluation`**
+*Assembles the "expert team" and evaluates the final model*
+`⬇️`
+**`Script 5: Prediction`**
+*Applies the trained model to solve real-world problems*
 
 ---
 
