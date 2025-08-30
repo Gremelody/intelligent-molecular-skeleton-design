@@ -4,7 +4,7 @@
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](https://opensource.org/licenses/MIT)
 [![Status](https://img.shields.io/badge/status-active-brightgreen.svg)]()
 
-This repository provides a complete, modular workflow designed to integrate first-principles calculations (DFT) with modern machine learning techniques to accelerate research in materials science and computational chemistry. The pipeline covers the entire process from high-throughput virtual library construction and representative sampling, to sophisticated feature engineering, hyperparameter optimization, and finally to the construction, evaluation, interpretation, and application of a high-performance stacking ensemble model.
+This repository provides a complete, modular workflow designed to integrate quantum chemistry with modern machine learning techniques to accelerate research in materials science and computational chemistry. The pipeline covers the entire process from high-throughput virtual library construction and representative sampling, to sophisticated feature engineering, hyperparameter optimization, and finally to the construction, evaluation, interpretation, and application of a high-performance stacking ensemble model.
 
 ## 🚀 Key Features
 
