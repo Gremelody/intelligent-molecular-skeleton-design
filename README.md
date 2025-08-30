@@ -259,7 +259,7 @@ You can copy the entire content below into a file named `requirements.txt` and i
 
 ```text
 pandas==2.2.2
-numpy==1.22.4
+numpy==1.26.4
 matplotlib==3.8.4
 seaborn==0.13.2
 scikit-learn==1.6.1
