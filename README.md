@@ -221,17 +221,22 @@ This workflow seamlessly connects five core scripts to guide you from data gener
     pip install -r requirements.txt
     ```
 
-2.  **Data Preparation**:
-    * Use **Script 1** to define your chemical problem and generate a representative list of molecules for DFT calculations.
-    * After completing your DFT calculations, organize the results and your designed feature descriptors into a single Excel file to be used as input for **Script 2**.
+2.  **Prepare Data**:
+    * Use the code in `Molecule Generation & Sampling.ipynb` (**Script 1**) to define your chemical problem and generate a list of representative molecules for DFT calculations.
+    * After completing your DFT calculations, organize the results and your engineered features into an Excel spreadsheet. This will be the input for the next step.
 
-3.  **Execute Scripts Sequentially**:
-    * Run **Script 2** to perform feature engineering on your raw data to get the optimal feature set.
-    * Run **Script 3** on the output from the previous step to find the optimal hyperparameters for all candidate models.
-    * Run **Script 4** to build and evaluate the final Stacking Ensemble model.
-    * Run **Script 5** with your own unseen data file to make final predictions.
+3.  **Execute the Notebooks Sequentially**:
 
-    ⚠️ **Important Note**: Scripts 3, 4, and 5 are designed to be run sequentially within the same Python session (e.g., a Jupyter Notebook or an IPython environment), as they communicate through in-memory variables (like `grid_searches`).
+    * **Step 1: Feature Engineering**
+        * Open and run all cells in `Feature Engineering.ipynb` (**Script 2**). This will perform feature selection on your raw database and generate the optimal feature set.
+
+    * **Step 2: Model Training and Prediction**
+        * Open `Tree_stacking.ipynb`. This notebook contains the final three stages of the workflow.
+        * Run the cells corresponding to **Script 3 (Hyperparameter Optimization)** to find the best hyperparameters for your models.
+        * Continue running the cells for **Script 4 (Stacking Ensemble & Evaluation)** to build and evaluate the final ensemble model.
+        * Finally, run the cells for **Script 5 (Prediction)**, making sure to configure the path to your own unseen data file, to get the final predictions.
+
+    ⚠️ **Important Note**: The cells within `Tree_stacking.ipynb` (Scripts 3, 4, and 5) are designed to be run sequentially in the same session, as they communicate through in-memory variables (like `grid_searches` and `global_best_meta_learner`).
 
 ## 📦 Requirements (`requirements.txt`)
 
