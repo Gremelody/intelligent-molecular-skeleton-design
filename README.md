@@ -50,12 +50,12 @@ This workflow seamlessly connects five core scripts to guide you from data gener
 
 ---
 
-### 📜 Script 1: Molecular Library Generation & Representative Sampling
+### 📜 Script 1: Molecule Combination Generation & Sampling
 
-* **🎯 Purpose**:
-    * Generates all possible molecular combinations based on user-defined substitution sites and functional groups.
-    * Automatically identifies and eliminates duplicate structures using symmetry rules to ensure library uniqueness.
-    * Executes an advanced hybrid sampling strategy to select a manageable and highly representative subset for DFT calculations.
+* **🎯 Function**:
+    * Generates all possible molecular combinations based on user-defined substitutable sites and functional groups.
+    * Automatically identifies and eliminates duplicate structures using symmetry rules, ensuring a unique molecular library.
+    * Executes an advanced hybrid sampling strategy to select a manageable and highly representative subset for subsequent DFT calculations.
     * Provides UMAP dimensionality reduction for intuitive visualization of the sampling coverage and uniformity.
 
 * **▶️ Usage**:
@@ -65,19 +65,23 @@ This workflow seamlessly connects five core scripts to guide you from data gener
 * **⚙️ Tunable Parameters**:
     * `NUM_SITES`: **(Required)** The total number of substitutable sites on the molecular scaffold.
     * `NUM_FUNCTIONAL_GROUPS`: **(Required)** The total number of available functional groups or building blocks.
-    * `SYMMETRY_STRING`: **(Key)** Defines site symmetry. The format is flexible, e.g., `"1,3"` means sites 1 and 3 are equivalent; `"1,4; 2,3"` means 1 is equivalent to 4 AND 2 is equivalent to 3. Leave empty for no symmetry.
-    * `SAMPLE_FRACTION`: The proportion (0.0 to 1.0) of the total library to sample, e.g., `0.1` for 10%.
-    * `RANDOM_SEED`: A seed for random processes to ensure the reproducibility of sampling and visualization.
+    * `SYMMETRY_STRING`: **(Key)** Defines site symmetry. The format is flexible, e.g., `"1,3"` means sites 1 and 3 are equivalent; `"1,4; 2,3"` means 1 is equivalent to 4, AND 2 is equivalent to 3. Leave empty for no symmetry.
+    * `SAMPLE_FRACTION`: The proportion of the total library to sample (a value between 0.0 and 1.0), e.g., `0.1` for 10%.
+    * `RANDOM_SEED`: A random seed to ensure the reproducibility of sampling and visualization.
 
-* **📄 Outputs (Files & Information)**:
-    * **Console Output**: Prints configuration details, the total number of unique molecules found, statistics for each molecular pattern, and the sampling target.
+* **📄 Outputs**:
+    * **Console Output**: Prints configuration details, the total number of unique molecules generated, statistics for each molecular pattern, and sampling targets.
     * `all_possible_molecules.xlsx`: The complete database containing all unique molecular combinations.
-    * `representative_sample.xlsx`: The representative subset of molecules selected via the hybrid sampling strategy.
-    * **UMAP Visualization**: A pop-up window displaying the distribution of sampled points (red) within the total chemical space (gray).
+    * `representative_sample.xlsx`: The representative subset of molecules selected by the hybrid sampling strategy.
+    * **UMAP Visualization Plot**: An interactive plot window showing the distribution of sampled points (red) within the entire chemical space (gray).
+    * **💡 Output Format Note**: In the output `.xlsx` files, each molecule is represented by a sequence of numbers (e.g., `173`).
+        * **Arabic numerals** (`1`, `7`, `3`, etc.) represent the different types of functional groups.
+        * The **position of the number** corresponds to the site on the molecule (e.g., the first number for site 1, the second for site 2, etc.).
+        * For example, the molecule `173` signifies that site 1 is substituted with functional group 1, site 2 with group 7, and site 3 with group 3.
 
 * **💡 Highlights**:
-    * **Canonicalization for Deduplication**: Accurately removes duplicate structures arising from symmetry by calculating a molecule's "Canonical Form".
-    * **Hybrid Sampling Strategy**: Rigorously pursues component balance, achieving an optimal trade-off between diversity and representativeness.
+    * **Canonicalization for Deduplication**: Accurately removes duplicate structures by calculating a molecule's "canonical form."
+    * **Hybrid Sampling Strategy**: Strictly pursues component balance, achieving an optimal trade-off between diversity and representativeness.
 
 ---
 
