@@ -30,32 +30,32 @@ This repository contains the complete workflow applied to two distinct research 
 This workflow seamlessly connects five core scripts to guide you from data generation to final prediction, following a clear, sequential path.
 
  **`Script 1: Molecule Generation & Sampling`**
->
-> *Defines the problem, generates computational tasks*
->
-> `⬇️`
->
-> **`Script 2: Feature Engineering`**
->
-> *Builds the initial database from DFT results, selects optimal features*
->
-> `⬇️`
->
-> **`Script 3: Hyperparameter Optimization`**
->
-> *Finds the optimal "operating state" for each base model*
->
-> `⬇️`
->
-> **`Script 4: Stacking Ensemble & Evaluation`**
->
-> *Assembles the "expert team" and evaluates the final model*
->
-> `⬇️`
->
-> **`Script 5: Prediction`**
->
-> *Applies the trained model to solve real-world problems*
+
+ *Defines the problem, generates computational tasks*
+
+ `⬇️`
+
+ **`Script 2: Feature Engineering`**
+
+ *Builds the initial database from DFT results, selects optimal features*
+
+ `⬇️`
+
+ **`Script 3: Hyperparameter Optimization`**
+
+ *Finds the optimal "operating state" for each base model*
+
+ `⬇️`
+
+ **`Script 4: Stacking Ensemble & Evaluation`**
+
+ *Assembles the "expert team" and evaluates the final model*
+
+ `⬇️`
+
+ **`Script 5: Prediction`**
+
+ *Applies the trained model to solve real-world problems*
 
 ---
 
