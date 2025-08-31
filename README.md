@@ -6,17 +6,9 @@
 
 This repository provides a complete, modular workflow designed to integrate quantum chemistry with modern machine learning techniques to accelerate research in materials science and computational chemistry. The pipeline covers the entire process from high-throughput virtual library construction and representative sampling, to sophisticated feature engineering, hyperparameter optimization, and finally to the construction, evaluation, interpretation, and application of a high-performance stacking ensemble model.
 
-## 📂 Project Structure and Focus
-
-This repository contains the complete workflow applied to two distinct research projects. The scripts are identical in function but differ in their specific configurations.
-
-* **`CPyr/`**: This directory contains the **main body of work**, focusing on the **dichloropyrimidine** molecular system serve as addictives in `Li-S batteries`. The descriptions and details throughout this README primarily refer to this project.
-* **`1,4-Benzoquinone/`**: This directory contains a **secondary application** of the same workflow to the **1,4-Benzoquinone** system serve as addictives in `Li-CO2 batteries`. It serves as another example validating the universality of this machine learning workflow and molecular skeleton design paradigm.
-
----
 ## 📂 Repository Structure and Workflow
 
-This repository contains two core research projects, each utilizing the complete code workflow.
+This repository contains two core research projects, each utilizing the complete code workflow. The `CPyr/` directory holds the main body of work, focusing on the **dichloropyrimidine** molecular system as additives in `Li-S batteries`, which is the primary subject of this README. The `1,4-Benzoquinone/` directory contains a secondary application of the same workflow to the **1,4-Benzoquinone** system as additives in `Li-CO2 batteries`, serving as another example to validate the universality of this machine learning workflow and molecular skeleton design paradigm.
 
 ```
 ├── CPyr/                           # 🧪 Primary Project: Dichloropyrimidine (Dual-Target: Gap, Barrier)
