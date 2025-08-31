@@ -11,6 +11,7 @@ This repository provides a complete, modular workflow designed to integrate quan
 This repository contains two core research projects, each utilizing the complete code workflow. The `CPyr/` directory holds the main body of work, focusing on the **dichloropyrimidine** molecular system as additives in `Li-S batteries`, which is the primary subject of this README. The `1,4-Benzoquinone/` directory contains a secondary application of the same workflow to the **1,4-Benzoquinone** system as additives in `Li-CO2 batteries`, serving as another example to validate the universality of this machine learning workflow and molecular skeleton design paradigm.
 
 ```
+.
 ├── CPyr/                           # 🧪 Primary Project: Dichloropyrimidine (Dual-Target: Gap, Barrier)
 │   ├── Molecule Generation & Sampling.ipynb
 │   ├── Feature Engineering.ipynb
