@@ -14,6 +14,59 @@ This repository contains the complete workflow applied to two distinct research 
 * **`1,4-Benzoquinone/`**: This directory contains a **secondary application** of the same workflow to the **1,4-Benzoquinone** system serve as addictives in `Li-CO2 batteries`. It serves as another example validating the universality of this machine learning workflow and molecular skeleton design paradigm.
 
 ---
+## 📂 Repository Structure
+
+This repository is organized into two main project folders, each containing a complete and self-contained study.
+
+.
+├── CPyr/                           # 🧪 Primary Project: Dichloropyrimidine System (Multi-target)
+│   ├── Molecule Generation & Sampling.ipynb
+│   ├── Feature Engineering.ipynb
+│   ├── Tree_stacking.ipynb
+│   ├── Original dataset.xlsx
+│   ├── Gap-prediction.xlsx
+│   └── Barrier-prediction.xlsx
+│
+├── 1,4-Benzoquinone/               # 🧪 Secondary Project: 1,4-Benzoquinone System (Single-target)
+│   ├── Molecule Generation & Sampling-BQ.ipynb
+│   ├── Feature Engineering-BQ.ipynb
+│   ├── Tree_stacking-BQ.ipynb
+│   ├── Original dataset-BQ.xlsx
+│   └── Eb-prediction-BQ.xlsx
+│
+├── requirements.txt                # 📦 All Python dependencies required for the project
+├── LICENSE                         # 📜 The MIT License file
+└── README.md                       # 📄 The document you are currently reading
+
+
+### **`CPyr/` (Primary Project: Dichloropyrimidine)**
+
+This directory contains the main body of work, a **multi-target** study on the dichloropyrimidine molecular system.
+
+* **Notebooks**:
+    * `Molecule Generation & Sampling.ipynb`: (Script 1) Generates the molecular library.
+    * `Feature Engineering.ipynb`: (Script 2) Processes the raw data. Since the source has two targets (`Gap` and `Barrier`), this script should be used to generate two separate feature-engineered datasets: **`Gap-final dataset.xlsx`** and **`Barrier-final dataset.xlsx`**.
+    * `Tree_stacking.ipynb`: (Scripts 3, 4, 5) This notebook should be run **twice**, once for each target variable:
+        1.  **For the 'Gap' target**: Use `Gap-final dataset.xlsx` for training/evaluation (Scripts 3 & 4) and `Gap-prediction.xlsx` for prediction (Script 5).
+        2.  **For the 'Barrier' target**: Use `Barrier-final dataset.xlsx` for training/evaluation and `Barrier-prediction.xlsx` for prediction.
+
+* **Data Files**:
+    * `Original dataset.xlsx`: The initial dataset with raw features for both `Gap` and `Barrier` targets. **Input for `Feature Engineering.ipynb`**.
+    * `Gap-prediction.xlsx` / `Barrier-prediction.xlsx`: Unseen datasets with features for predicting `Gap` and `Barrier`, respectively. **Inputs for Script 5 in `Tree_stacking.ipynb`**.
+
+### **`1,4-Benzoquinone/` (Secondary Project)**
+
+This directory contains a **single-target** (`Eb`) study on the 1,4-Benzoquinone system, demonstrating the workflow's versatility.
+
+* **Notebooks**:
+    * The notebooks (`...-BQ.ipynb`) perform the same functions as in the `CPyr` project but are configured for this specific single-target task.
+
+* **Workflow & Data Files**:
+    1.  `Feature Engineering-BQ.ipynb` (Script 2) takes **`Original dataset-BQ.xlsx`** as input.
+    2.  It produces a single feature-engineered output: **`Eb-final dataset-BQ.xlsx`**.
+    3.  `Tree_stacking-BQ.ipynb` (Scripts 3, 4, 5) uses `Eb-final dataset-BQ.xlsx` for training/evaluation and **`Eb-prediction-BQ.xlsx`** for final prediction.
+
+---
 
 ## 🚀 Key Features
 
