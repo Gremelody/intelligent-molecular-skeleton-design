@@ -17,7 +17,7 @@ This repository contains the complete workflow applied to two distinct research 
 ## 📂 Repository Structure and Workflow
 
 This repository contains two core research projects, each utilizing the complete code workflow.
-
+```
 .
 ├── CPyr/                           # 🧪 Primary Project: Dichloropyrimidine (Dual-Target: Gap, Barrier)
 │   ├── Molecule Generation & Sampling.ipynb
@@ -42,7 +42,7 @@ This repository contains two core research projects, each utilizing the complete
 ├── requirements.txt                # 📦 All Python dependencies required for the project
 ├── LICENSE                         # 📜 The MIT License file
 └── README.md                       # 📄 The document you are currently reading
-
+```
 
 ### Workflow Details
 
