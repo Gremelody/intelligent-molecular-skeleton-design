@@ -17,8 +17,8 @@ This repository contains the complete workflow applied to two distinct research 
 ## 📂 Repository Structure and Workflow
 
 This repository contains two core research projects, each utilizing the complete code workflow.
+
 ```
-.
 ├── CPyr/                           # 🧪 Primary Project: Dichloropyrimidine (Dual-Target: Gap, Barrier)
 │   ├── Molecule Generation & Sampling.ipynb
 │   ├── Feature Engineering.ipynb
@@ -307,7 +307,7 @@ This workflow seamlessly connects five core scripts to guide you from data gener
 
 You can copy the entire content below into a file named `requirements.txt` and install all dependencies at once using the command: `pip install -r requirements.txt`.
 
-```text
+```
 pandas==2.2.2
 numpy==1.26.4
 matplotlib==3.8.4
