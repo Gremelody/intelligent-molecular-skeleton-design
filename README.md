@@ -283,4 +283,4 @@ For any inquiries or if you use this workflow in your research, please correspon
 
 ## 🙏 Acknowledgements
 
-This project was conceived and brought to life by [Yifei Zhu](mailto:zhuyifeiedu@126.com) at Tsinghua University. He formulated the algorithms 💡, developed and deposited the code 👨‍💻, and authored this comprehensive guideline document ✍️.
+[Yifei Zhu](zhuyifeiedu@126.com) at Tsinghua University conceived and formulated the algorithms, built the quantum chemistry database, developed and deposited the code, and authored this comprehensive guideline document.
