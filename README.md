@@ -29,11 +29,11 @@ This repository contains two core research projects, each utilizing the complete
 │   ├── Feature Engineering.ipynb                 # Contains script 2 for feature engineering
 │   ├── Tree_stacking.ipynb                       # Contains script 3-5 for Hyperparameter Optimization, Stacking Ensemble & Evaluation and Prediction
 │   └── data/                                     # Contains data files for this project
-│       ├── Original dataset.xlsx                   #  -> Raw database for Script 2
-│       ├── Gap-final dataset.xlsx                  #  -> Feature engineering output for Gap target
+│       ├── Original dataset.xlsx                   # -> Raw database for Script 2
+│       ├── Gap-final dataset.xlsx                  # -> Feature engineering output for Gap target
 │       ├── Barrier-final dataset.xlsx              # -> Feature engineering output for Barrier target
-│       ├── Gap-prediction.xlsx                     #  -> Prediction set for Gap target
-│       └── Barrier-prediction.xlsx                 #  -> Prediction set for Barrier target
+│       ├── Gap-prediction.xlsx                     # -> Prediction set for Gap target
+│       └── Barrier-prediction.xlsx                 # -> Prediction set for Barrier target
 │
 ├── 1,4-Benzoquinone/                           # 🧪 Secondary Project: 1,4-Benzoquinone (Single-Target: Eb)
 │   ├── Molecule Generation & Sampling-BQ.ipynb   # Contains script 1 for building the dataset
