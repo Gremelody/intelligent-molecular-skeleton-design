@@ -271,6 +271,7 @@ shap==0.48.0
 umap-learn==0.5.7
 tqdm==4.67.1
 openpyxl==3.1.5
+```
 
 ## 📜 License and Correspondence
 
