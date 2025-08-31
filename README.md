@@ -131,7 +131,7 @@ This workflow seamlessly connects five core scripts to guide you from data gener
         * The **position** of a numeral corresponds to the **site** on the scaffold (e.g., the first digit is for site 1, the second for site 2, etc.).
         * The **numeral itself** represents the functional group at that site. The mapping varies by project:
             * For the primary **Dichloropyrimidine** project (`CPyr/`):
-                * * `1` to `6` correspond to `-H`, `-Me`, `-Et`, `-NH2`, `-OCH3`, `-CF3`, `-CN`.
+                * `1` to `7` correspond to `-H`, `-Me`, `-Et`, `-NH2`, `-OCH3`, `-CF3`, `-CN`.
             * For the secondary **1,4-Benzoquinone** project:
                 * `1` to `6` correspond to `-F`, `-Cl`, `-H`, `-Me`, `-OCH3`, `-NH2`.
         * **Example (Dichloropyrimidine)**: A molecule represented as `"216"` means Site 1 is substituted with `-Me`, Site 2 with `-H`, and Site 3 with `-CF3`.
