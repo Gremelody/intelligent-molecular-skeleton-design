@@ -6,6 +6,18 @@
 
 This repository provides a complete, modular workflow designed to integrate quantum chemistry with modern machine learning techniques to accelerate research in materials science and computational chemistry. The pipeline covers the entire process from high-throughput virtual library construction and representative sampling, to sophisticated feature engineering, hyperparameter optimization, and finally to the construction, evaluation, interpretation, and application of a high-performance stacking ensemble model.
 
+## 🚀 Key Features
+
+* **End-to-End Pipeline** 🛣️: Offers a complete solution from problem definition to final prediction, covering all critical stages of a scientific research task.
+* **Intelligent Library Sampling** 🧬: Employs symmetry analysis and an innovative hybrid sampling strategy to efficiently select the most informative and representative subset from a vast combinatorial space, saving significant resources on subsequent DFT calculations.
+* **Advanced Feature Engineering** 🛠️: Utilizes a three-stage "Filter-Embedded-Wrapper" strategy, combining Pearson correlation, SHAP feature importance, and iterative wrapper-based selection to precisely identify the optimal feature set.
+* **Efficient Hyperparameter Optimization** ⚡: Leverages the Bayesian Optimization algorithm to intelligently and efficiently search for the best hyperparameter combinations, far surpassing traditional grid or random search methods.
+* **Powerful Stacking Ensemble** 🧠: Integrates multiple high-performance base models (e.g., XGBoost, LightGBM) and trains a meta-learner to optimally combine their predictions, significantly boosting predictive accuracy and generalization.
+* **Unique Model Interpretability** 📊: Features a novel **"Two-Level Weighted SHAP Analysis"** method, which provides a globally unified and highly reliable feature importance ranking by considering the performance of both base models and the final ensemble.
+* **Reproducibility & Robustness** 🔁: Ensures complete reproducibility of results through global random seeds and assesses model stability and robustness via repeated cross-validation.
+
+---
+
 ## 📂 Repository Structure and Workflow
 
 This repository contains two core research projects, each utilizing the complete code workflow. The `CPyr/` directory holds the main body of work, focusing on the **dichloropyrimidine** molecular system as additives in `Li-S batteries`, which is the primary subject of this README. The `1,4-Benzoquinone/` directory contains a secondary application of the same workflow to the **1,4-Benzoquinone** system as additives in `Li-CO2 batteries`, serving as another example to validate the universality of this machine learning workflow and molecular skeleton design paradigm.
@@ -55,50 +67,6 @@ This is a dual-target study requiring separate models for `Gap` and `Barrier`.
 This is a more straightforward, single-target (`Eb`) study. Script filenames include a `-BQ` suffix for distinction.
 1.  **Feature Engineering (Script 2)**: Run `Feature Engineering-BQ.ipynb`, using `Original dataset-BQ.xlsx` as input to produce `Eb-final dataset-BQ.xlsx`.
 2.  **Model Training & Prediction (Scripts 3, 4, 5)**: Run `Tree_stacking-BQ.ipynb`, using `Eb-final dataset-BQ.xlsx` as input and `Eb-prediction-BQ.xlsx` for the final prediction.
-
----
-
-## 🚀 Key Features
-
-* **End-to-End Pipeline** 🛣️: Offers a complete solution from problem definition to final prediction, covering all critical stages of a scientific research task.
-* **Intelligent Library Sampling** 🧬: Employs symmetry analysis and an innovative hybrid sampling strategy to efficiently select the most informative and representative subset from a vast combinatorial space, saving significant resources on subsequent DFT calculations.
-* **Advanced Feature Engineering** 🛠️: Utilizes a three-stage "Filter-Embedded-Wrapper" strategy, combining Pearson correlation, SHAP feature importance, and iterative wrapper-based selection to precisely identify the optimal feature set.
-* **Efficient Hyperparameter Optimization** ⚡: Leverages the Bayesian Optimization algorithm to intelligently and efficiently search for the best hyperparameter combinations, far surpassing traditional grid or random search methods.
-* **Powerful Stacking Ensemble** 🧠: Integrates multiple high-performance base models (e.g., XGBoost, LightGBM) and trains a meta-learner to optimally combine their predictions, significantly boosting predictive accuracy and generalization.
-* **Unique Model Interpretability** 📊: Features a novel **"Two-Level Weighted SHAP Analysis"** method, which provides a globally unified and highly reliable feature importance ranking by considering the performance of both base models and the final ensemble.
-* **Reproducibility & Robustness** 🔁: Ensures complete reproducibility of results through global random seeds and assesses model stability and robustness via repeated cross-validation.
-
-## 🗺️ The Workflow
-
-This workflow seamlessly connects five core scripts to guide you from data generation to final prediction, following a clear, sequential path.
-
- **`Script 1: Molecule Generation & Sampling`**
-
- *Defines the problem, generates computational tasks*
-
- `⬇️`
-
- **`Script 2: Feature Engineering`**
-
- *Builds the initial database from DFT results, selects optimal features*
-
- `⬇️`
-
- **`Script 3: Hyperparameter Optimization`**
-
- *Finds the optimal "operating state" for each base model*
-
- `⬇️`
-
- **`Script 4: Stacking Ensemble & Evaluation`**
-
- *Assembles the "expert team" and evaluates the final model*
-
- `⬇️`
-
- **`Script 5: Prediction`**
-
- *Applies the trained model to solve real-world problems*
 
 ---
 
@@ -272,6 +240,42 @@ This workflow seamlessly connects five core scripts to guide you from data gener
     * **One-Click Prediction**: A highly automated process; the user only needs to provide the new data file to get predictions.
     * **Column Alignment Mechanism**: Robustly handles the new data by automatically aligning its columns with the training data, preventing common errors caused by column name mismatches.
 
+---
+
+## 🗺️ The Workflow
+
+This workflow seamlessly connects five core scripts to guide you from data generation to final prediction, following a clear, sequential path.
+
+ **`Script 1: Molecule Generation & Sampling`**
+
+ *Defines the problem, generates computational tasks*
+
+ `⬇️`
+
+ **`Script 2: Feature Engineering`**
+
+ *Builds the initial database from DFT results, selects optimal features*
+
+ `⬇️`
+
+ **`Script 3: Hyperparameter Optimization`**
+
+ *Finds the optimal "operating state" for each base model*
+
+ `⬇️`
+
+ **`Script 4: Stacking Ensemble & Evaluation`**
+
+ *Assembles the "expert team" and evaluates the final model*
+
+ `⬇️`
+
+ **`Script 5: Prediction`**
+
+ *Applies the trained model to solve real-world problems*
+
+---
+
 ## 💻 How to Use
 
 1.  **Environment Setup**:
@@ -296,6 +300,8 @@ This workflow seamlessly connects five core scripts to guide you from data gener
 
     ⚠️ **Important Note**: Scripts 3, 4, and 5 are located within `Tree_stacking.ipynb` and must be run in the same session to pass variables (like optimized models) in memory.
 
+---    
+
 ## 📦 Requirements (`requirements.txt`)
 
 You can copy the entire content below into a file named `requirements.txt` and install all dependencies at once using the command: `pip install -r requirements.txt`.
@@ -315,6 +321,8 @@ umap-learn==0.5.7
 tqdm==4.67.1
 openpyxl==3.1.5
 ```
+
+---
 
 ## 📜 License and Correspondence
 
