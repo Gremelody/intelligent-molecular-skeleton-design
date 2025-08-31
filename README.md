@@ -271,3 +271,15 @@ shap==0.48.0
 umap-learn==0.5.7
 tqdm==4.67.1
 openpyxl==3.1.5
+
+## 📜 License and Correspondence
+
+The data and code in this repository are available under the [MIT License](https://github.com/Gremelody/intelligent-molecular-skeleton-design/blob/main/LICENSE).
+
+For any inquiries or if you use this workflow in your research, please correspond with Prof. [Guangmin Zhou](mailto:guangminzhou@sz.tsinghua.edu.cn) 📧.
+
+---
+
+## 🙏 Acknowledgements
+
+This project was conceived and brought to life by [Yifei Zhu](mailto:zhuyifeiedu@126.com) at Tsinghua University. He formulated the algorithms 💡, developed and deposited the code 👨‍💻, and authored this comprehensive guideline document ✍️.
