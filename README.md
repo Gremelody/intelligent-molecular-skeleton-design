@@ -301,13 +301,84 @@ This workflow seamlessly connects five core scripts to guide you from data gener
 
 ---    
 
-## 📦 Requirements (`requirements.txt`)
+## 📦 Environment Setup & Reproducibility Guide
 
-You can copy the entire content below into a file named `requirements.txt` and install all dependencies at once using the command: `pip install -r requirements.txt`.
+To ensure the correct execution of the code and the reliable reproduction of our experimental results, we provide three distinct methods for environment setup. Please choose the one that best suits your needs.
+
+**IMPORTANT NOTE:** For academic review or users who need to reproduce the results and figures from our paper **exactly**, it is **highly recommended to use Option 1**. Using Option 2 or 3 may lead to minor numerical differences in the output, even with identical code and random seeds. This is primarily due to the following reasons:
+
+1.  **Dependency Solver Ambiguity**: `environment.yml` and `requirements.txt` files define the primary dependencies. Over time, the dependency solver (Conda or Pip) might install different versions of underlying sub-dependencies, leading to a slightly different computational environment.
+2.  **Platform-Specific Builds**: Even with identical package versions, the underlying compiled libraries (e.g., Intel MKL vs. OpenBLAS for numerical computations) can differ across operating systems (Windows/Linux/macOS), causing minute variations in floating-point calculations.
+3.  **Sensitivity of Stochastic Optimization**: This project utilizes Bayesian Optimization, which is a stochastic process. The minor computational variations mentioned above can influence the optimization trajectory, leading to slightly different hyperparameter choices. This, in turn, can affect the final model performance and results.
+
+Only **Option 1** (`spec-file.txt`) fully constrains the environment to mitigate these factors and guarantee identical outcomes.
+
+---
+
+### 🥇 Option 1: Exact Reproducibility (via `spec-file.txt`)
+
+This is the **only method guaranteed** to perfectly reproduce the numerical results and figures reported in our paper. It uses an explicit specification file that locks the exact version, build, and source URL of every package.
+
+**Platform:** This method is strictly platform-dependent. The provided `spec-file.txt` is for **Windows (x64)** only.
+
+**Instructions:**
+1.  Ensure you have [Conda](https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html) installed.
+2.  Download the `spec-file.txt` file from this repository.
+3.  Execute the following command in your terminal (Anaconda Prompt) to create the environment:
+    ```bash
+    conda create --name my-project-env --file spec-file.txt
+    ```
+4.  Activate the newly created environment:
+    ```bash
+    conda activate my-project-env
+    ```
+
+---
+
+### 🥈 Option 2: Cross-Platform Setup (via `environment.yml`)
+
+This method is recommended for general users who wish to run the code on different operating systems (e.g., Linux, macOS). It uses the `environment.yml` file to create a functionally equivalent environment but may produce minor numerical differences from the original results.
+
+**Instructions:**
+1.  Ensure you have Conda installed.
+2.  Download the `environment.yml` file from this repository.
+3.  Execute the following command to create the environment:
+    ```bash
+    conda env create -f environment.yml
+    ```
+4.  Activate the environment:
+    ```bash
+    conda activate matsci-ai
+    ```
+
+---
+
+### 🥉 Option 3: Basic Setup (via `requirements.txt`)
+
+This option is provided for users who prefer to work with standard Python virtual environments (`venv`) and `pip`. This method also does not guarantee exact numerical reproducibility.
+
+**Instructions:**
+1.  It is recommended to first create and activate a Python virtual environment:
+    ```bash
+    python -m venv venv
+    # On Windows, activate with:
+    # venv\Scripts\activate
+    # On Linux/macOS, activate with:
+    # source venv/bin/activate
+    ```
+2.  Download the `requirements.txt` file from this repository.
+3.  Run the following command to install all dependencies:
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+---
+---
 
 ```
+# Core scientific computing and machine learning libraries
 pandas==2.2.2
-numpy==1.26.4
+numpy==1.22.4
 matplotlib==3.8.4
 seaborn==0.13.2
 scikit-learn==1.6.1
@@ -319,6 +390,11 @@ shap==0.48.0
 umap-learn==0.5.7
 tqdm==4.67.1
 openpyxl==3.1.5
+
+# Libraries for Jupyter Notebook integration
+notebook==7.3.2
+ipykernel==6.29.5
+ipywidgets==8.1.7
 ```
 
 ---
