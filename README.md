@@ -348,8 +348,6 @@ ipywidgets==8.1.7
 3.  **Sensitivity of Stochastic Optimization** 🎲: This project utilizes Bayesian Optimization. The minor computational variations from the points above can influence the optimization trajectory, leading to different hyperparameter choices and, consequently, different final results.
 4.  **Stochasticity from Parallel Computing** ⚡: To accelerate computations, the script may utilize parallel processing (e.g., via `n_jobs=-1`). However, when computations are executed across multiple CPU cores, the precise order of floating-point operations can vary slightly, which can be amplified by iterative algorithms.
 
-Therefore, for the most rigorous replication, in addition to using **Option 1**, it is also advisable to run the script in a **single-threaded mode** (e.g., by setting `n_jobs=1` in the hyperparameter optimization step).
-
 ---
 
 ### 🥇 Option 1: Highest-Fidelity Reproducibility (via `spec-file.txt`) 
