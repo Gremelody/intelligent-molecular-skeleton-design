@@ -301,11 +301,17 @@ This workflow seamlessly connects five core scripts to guide you from data gener
 
 ---    
 
-# 📦 Environment Setup & Reproducibility
+## 📦 Environment Setup & Reproducibility
 
 This section outlines the necessary dependencies and provides three distinct methods for environment setup. Please choose the one that best suits your needs.
 
-## Core Dependencies
+### 🐍 Python Version
+
+This project was developed and tested using **Python 3.10.18**. While it may work with other Python 3.10+ versions, using this specific version is recommended to maximize reproducibility. The configuration files provided in the options below will automatically install the correct Python version when using Conda.
+
+---
+
+### 📋 Core Dependencies
 
 While the full environment contains numerous packages, the core scientific computing and machine learning libraries used in this project are listed below. The exact versions are managed by the configuration files in the following sections.
 
@@ -333,7 +339,7 @@ ipywidgets==8.1.7
 
 ---
 
-## Environment Configuration
+### Environment Configuration
 
 **⚠️ IMPORTANT NOTE:** For academic review or users who need to reproduce the results from our paper as closely as possible, **it is highly recommended to use Option 1**. Using Option 2 or 3 is more likely to produce numerical differences in the output, even with identical code and random seeds. This is primarily due to the following reasons:
 
@@ -346,7 +352,7 @@ Therefore, for the most rigorous replication, in addition to using **Option 1**,
 
 ---
 
-### 🥇 Option 1: Highest-Fidelity Reproducibility (via `spec-file.txt`) 🔒
+### 🥇 Option 1: Highest-Fidelity Reproducibility (via `spec-file.txt`) 
 
 This method is the most robust approach to maximize the likelihood of reproducing the numerical results. It uses an explicit specification file that locks the exact version, build, and source URL of every software package.
 
@@ -366,7 +372,7 @@ This method is the most robust approach to maximize the likelihood of reproducin
 
 ---
 
-### 🥈 Option 2: Cross-Platform Setup (via `environment.yml`) 🌍
+### 🥈 Option 2: Cross-Platform Setup (via `environment.yml`) 
 
 This method is recommended for general users who wish to run the code on different operating systems (e.g., Linux, macOS). It uses the `environment.yml` file to create a functionally equivalent environment but may produce minor numerical differences from the original results.
 
@@ -384,7 +390,7 @@ This method is recommended for general users who wish to run the code on differe
 
 ---
 
-### 🥉 Option 3: Basic Setup (via `requirements.txt`) 🐍
+### 🥉 Option 3: Basic Setup (via `requirements.txt`) 
 
 This option is provided for users who prefer to work with standard Python virtual environments (`venv`) and `pip`. This method also does not ensure exact numerical reproducibility.
 
