@@ -377,7 +377,7 @@ This method is the most robust approach to maximize the likelihood of reproducin
 This method is recommended for general users who wish to run the code on different operating systems (e.g., Linux, macOS). It uses the `environment.yml` file to create a functionally equivalent environment but may produce minor numerical differences from the original results.
 
 **Instructions:**
-1.  Ensure you have Conda installed.
+1.  Ensure you have [Conda](https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html) installed.
 2.  Download the `environment.yml` file from this repository.
 3.  Execute the following command to create the environment:
     ```bash
