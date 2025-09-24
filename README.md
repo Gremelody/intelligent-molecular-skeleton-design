@@ -28,25 +28,24 @@ This repository contains two core research projects, each utilizing the complete
 │   ├── Molecule Generation & Sampling.ipynb      # Contains script 1 for building the dataset
 │   ├── Feature Engineering.ipynb                 # Contains script 2 for feature engineering
 │   ├── Tree_stacking.ipynb                       # Contains script 3-5 for Hyperparameter Optimization, Stacking Ensemble & Evaluation and Prediction
-│   └── data/                                     # Contains data files for this project
-│       ├── Original dataset.xlsx                   # -> Raw database for Script 2
-│       ├── Gap-final dataset.xlsx                  # -> Feature engineering output for Gap target
-│       ├── Barrier-final dataset.xlsx              # -> Feature engineering output for Barrier target
-│       ├── Gap-prediction.xlsx                     # -> Prediction set for Gap target
-│       └── Barrier-prediction.xlsx                 # -> Prediction set for Barrier target
+│   ├── Original dataset.xlsx                       # -> Raw database for Script 2
+│   ├── Gap-final dataset.xlsx                      # -> Feature engineering output for Gap target
+│   ├── Barrier-final dataset.xlsx                  # -> Feature engineering output for Barrier target
+│   ├── Gap-prediction.xlsx                         # -> Prediction set for Gap target
+│   └── Barrier-prediction.xlsx                     # -> Prediction set for Barrier target
 │
 ├── 1,4-Benzoquinone/                           # 🧪 Secondary Project: 1,4-Benzoquinone (Single-Target: Eb)
 │   ├── Molecule Generation & Sampling-BQ.ipynb   # Contains script 1 for building the dataset
 │   ├── Feature Engineering-BQ.ipynb              # Contains script 2 for feature engineering
 │   ├── Tree_stacking-BQ.ipynb                    # Contains script 3-5 for Hyperparameter Optimization, Stacking Ensemble & Evaluation and Prediction
-│   └── data/                                     # Contains data files for this project
-│       ├── Original dataset-BQ.xlsx                # -> Raw database for Script 2
-│       ├── Eb-final dataset-BQ.xlsx                # -> Feature engineering output
-│       └── Eb-prediction-BQ.xlsx                   # -> Prediction set
+│   ├── Original dataset-BQ.xlsx                    # -> Raw database for Script 2
+│   ├── Eb-final dataset-BQ.xlsx                    # -> Feature engineering output
+│   └── Eb-prediction-BQ.xlsx                      # -> Prediction set
 │
-├── requirements.txt                # 📦 All Python dependencies required for the project
-├── LICENSE                         # 📜 The MIT License file
-└── README.md                       # 📄 The document you are currently reading
+├── Feature set-functional groups.xlsx      # 🗂️ 50-dimensional feature data for 18 functional groups
+├── requirements.txt                        # 📦 All Python dependencies required for the project
+├── LICENSE                                 # 📜 The MIT License file
+└── README.md                               # 📄 The document you are currently reading
 ```
 
 ### Workflow Details
