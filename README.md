@@ -42,10 +42,12 @@ This repository contains two core research projects, each utilizing the complete
 │   ├── Eb-final dataset-BQ.xlsx                        # -> Feature engineering output
 │   └── Eb-prediction-BQ.xlsx                           # -> Prediction set
 │
-├── Feature set-functional groups.xlsx      # 🗂️ 50-dimensional feature data for 18 functional groups
-├── requirements.txt                        # 📦 All Python dependencies required for the project
-├── LICENSE                                 # 📜 The MIT License file
-└── README.md                               # 📄 The document you are currently reading
+├── environment.yml                               # 📦 Conda environment config for cross-platform setup
+├── requirements.txt                              # 📦 Pip dependencies for basic/non-Conda setup
+├── spec-file.txt                                 # 📦 Exact Conda config for highest-fidelity reproducibility (Win x64)
+├── Feature set-functional groups.xlsx            # 🗂️ 50-dimensional feature data for 18 functional groups
+├── LICENSE                                       # 📜 The MIT License file
+└── README.md                                     # 📄 The document you are currently reading
 ```
 
 ### Workflow Details
