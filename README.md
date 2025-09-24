@@ -379,11 +379,11 @@ This method is recommended for general users who wish to run the code on differe
 2.  Download the `environment.yml` file from this repository.
 3.  Execute the following command to create the environment:
     ```bash
-    conda env create -f environment.yml
+    conda create --name my-project-env --file environment.yml
     ```
 4.  Activate the environment:
     ```bash
-    conda activate matsci-ai
+    conda activate my-project-env
     ```
 
 ---
