@@ -20,11 +20,11 @@ This repository provides a complete, modular workflow designed to integrate quan
 
 ## 📂 Repository Structure and Workflow
 
-This repository contains two core research projects, each utilizing the complete code workflow. The `CPyr/` directory holds the main body of work, focusing on the **dichloropyrimidine** molecular system as additives in `Li-S batteries`, which is the primary subject of this README. The `1,4-Benzoquinone/` directory contains a secondary application of the same workflow to the **1,4-Benzoquinone** system as additives in `Li-CO2 batteries`, serving as another example to validate the universality of this machine learning workflow and molecular skeleton design paradigm.
+This repository contains two core research projects, each utilizing the complete code workflow. The `CPyr/` directory holds the main body of work, focusing on the **2-chloropyrimidine** molecular system as additives in `Li-S batteries`, which is the primary subject of this README. The `1,4-Benzoquinone/` directory contains a secondary application of the same workflow to the **1,4-Benzoquinone** system as additives in `Li-CO2 batteries`, serving as another example to validate the universality of this machine learning workflow and molecular skeleton design paradigm.
 
 ```
 .
-├── CPyr/                                         # 🧪 Primary Project: Dichloropyrimidine (Dual-Target: Gap, Barrier)
+├── CPyr/                                         # 🧪 Primary Project: 2-chloropyrimidine (Dual-Target: Gap, Barrier)
 │   ├── Molecule Generation & Sampling.ipynb         # Contains script 1 for building the dataset
 │   ├── Feature Engineering.ipynb                    # Contains script 2 for feature engineering
 │   ├── Tree_stacking.ipynb                          # Contains script 3-5 for Hyperparameter Optimization, Stacking Ensemble & Evaluation and Prediction
@@ -52,7 +52,7 @@ This repository contains two core research projects, each utilizing the complete
 
 ### Workflow Details
 
-#### 1. Dichloropyrimidine Project (CPyr - Dual-Target Task)
+#### 1. 2-chloropyrimidine Project (CPyr - Dual-Target Task)
 This is a dual-target study requiring separate models for `Gap` and `Barrier`.
 1.  **Feature Engineering (Script 2)**:
     * Use `Original dataset.xlsx` as input.
@@ -99,11 +99,11 @@ This is a more straightforward, single-target (`Eb`) study. Script filenames inc
         * The generated molecule is represented by a string of Arabic numerals (e.g., `"216"`).
         * The **position** of a numeral corresponds to the **site** on the scaffold (e.g., the first digit is for site 1, the second for site 2, etc.).
         * The **numeral itself** represents the functional group at that site. The mapping varies by project:
-            * For the primary **Dichloropyrimidine** project (`CPyr/`):
+            * For the primary **2-chloropyrimidine** project (`CPyr/`):
                 * `1` to `7` correspond to `-H`, `-Me`, `-Et`, `-NH2`, `-OCH3`, `-CF3`, `-CN`.
             * For the secondary **1,4-Benzoquinone** project:
                 * `1` to `6` correspond to `-F`, `-Cl`, `-H`, `-Me`, `-OCH3`, `-NH2`.
-        * **Example (Dichloropyrimidine)**: A molecule represented as `"216"` means Site 1 is substituted with `-Me`, Site 2 with `-H`, and Site 3 with `-CF3`.
+        * **Example (2-chloropyrimidine)**: A molecule represented as `"216"` means Site 1 is substituted with `-Me`, Site 2 with `-H`, and Site 3 with `-CF3`.
 
 * **💡 Highlights**:
     * **Canonicalization for Deduplication**: Accurately removes duplicate structures by calculating a molecule's "canonical form."
