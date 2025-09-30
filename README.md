@@ -28,7 +28,7 @@ This repository contains two core research projects, each utilizing the complete
 │   ├── Molecule Generation & Sampling.ipynb         # Contains script 1 for building the dataset
 │   ├── Feature Engineering.ipynb                    # Contains script 2 for feature engineering
 │   ├── Tree_stacking.ipynb                          # Contains script 3-5 for Hyperparameter Optimization, Stacking Ensemble & Evaluation and Prediction
-│   ├── Original dataset.xlsx                          # -> Raw database for Script 2
+│   ├── Original dataset.xlsx                          # -> Raw database for Script 2 (the orange-labeled samples are the original samples, and the others are samples generated after site exchange)
 │   ├── Gap-final dataset.xlsx                         # -> Feature engineering output for Gap target
 │   ├── Barrier-final dataset.xlsx                     # -> Feature engineering output for Barrier target
 │   ├── Gap-prediction.xlsx                            # -> Prediction set for Gap target
@@ -38,7 +38,7 @@ This repository contains two core research projects, each utilizing the complete
 │   ├── Molecule Generation & Sampling-BQ.ipynb      # Contains script 1 for building the dataset
 │   ├── Feature Engineering-BQ.ipynb                 # Contains script 2 for feature engineering
 │   ├── Tree_stacking-BQ.ipynb                       # Contains script 3-5 for Hyperparameter Optimization, Stacking Ensemble & Evaluation and Prediction
-│   ├── Original dataset-BQ.xlsx                        # -> Raw database for Script 2
+│   ├── Original dataset-BQ.xlsx                        # -> Raw database for Script 2 (the orange-labeled samples are the original samples, and the others are samples generated after site exchange)
 │   ├── Eb-final dataset-BQ.xlsx                        # -> Feature engineering output
 │   └── Eb-prediction-BQ.xlsx                           # -> Prediction set
 │
