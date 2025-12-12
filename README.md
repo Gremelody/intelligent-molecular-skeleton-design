@@ -320,7 +320,7 @@ While the full environment contains numerous packages, the core scientific compu
 ```
 # Core scientific computing and machine learning libraries
 pandas==2.2.2
-numpy==1.22.4
+numpy==1.26.4
 matplotlib==3.8.4
 seaborn==0.13.2
 scikit-learn==1.6.1
@@ -334,11 +334,11 @@ tqdm==4.67.1
 openpyxl==3.1.5
 
 # Libraries for Jupyter Notebook integration
+jupyterlab>=4.0.0
 notebook==7.3.2
 ipykernel==6.29.5
 ipywidgets==8.1.7
 ```
-
 ---
 
 ### Environment Configuration
