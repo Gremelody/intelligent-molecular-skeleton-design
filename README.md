@@ -352,20 +352,20 @@ ipywidgets==8.1.7
 
 ---
 
-### 🥇 Option 1: Highest-Fidelity Reproducibility (via `spec-file.txt`) 
+### 🥇 Option 1: Highest-Fidelity Reproducibility (via `spec-file.txt`)
 
 This method is the most robust approach to maximize the likelihood of reproducing the numerical results. It uses an explicit specification file that locks the exact version, build, and source URL of every software package.
 
 **Platform:** This method is strictly platform-dependent. The provided `spec-file.txt` is for **Windows (x64)** only.
 
 **Instructions:**
-1.  Ensure you have [Conda](https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html) installed.
-2.  Download the `spec-file.txt` file from this repository.
-3.  Execute the following command in your terminal (Anaconda Prompt) to create the environment:
+1. Ensure you have [Conda](https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html) installed.
+2. Download the `spec-file.txt` file from this repository.
+3. Execute the following command in your terminal (Anaconda Prompt) to create the environment:
     ```bash
     conda create --name my-project-env --file spec-file.txt
     ```
-4.  Activate the newly created environment:
+4. Activate the newly created environment:
     ```bash
     conda activate my-project-env
     ```
@@ -377,25 +377,25 @@ This method is the most robust approach to maximize the likelihood of reproducin
 This method is recommended for general users who wish to run the code on different operating systems (e.g., Linux, macOS). It uses the `environment.yml` file to create a functionally equivalent environment but may produce minor numerical differences from the original results.
 
 **Instructions:**
-1.  Ensure you have [Conda](https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html) installed.
-2.  Download the `environment.yml` file from this repository.
-3.  Execute the following command to create the environment:
+1. Ensure you have [Conda](https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html) installed.
+2. Download the `environment.yml` file from this repository.
+3. Execute the following command to create the environment:
     ```bash
     conda env create -f environment.yml -n my-project-env
     ```
-4.  Activate the environment:
+4. Activate the environment:
     ```bash
     conda activate my-project-env
     ```
-    
+
 ---
 
-### 🥉 Option 3: Basic Setup (via `requirements.txt`) 
+### 🥉 Option 3: Basic Setup (via `requirements.txt`)
 
 This option is provided for users who prefer to work with standard Python virtual environments (`venv`) and `pip`. This method also does not ensure exact numerical reproducibility.
 
 **Instructions:**
-1.  It is recommended to first create and activate a Python virtual environment:
+1. It is recommended to first create and activate a Python virtual environment:
     ```bash
     python -m venv venv
     # On Windows, activate with:
@@ -403,10 +403,10 @@ This option is provided for users who prefer to work with standard Python virtua
     # On Linux/macOS, activate with:
     # source venv/bin/activate
     ```
-2.  Download the `requirements.txt` file from this repository.
-3.  Run the following command to install all dependencies:
+2. Download the `requirements.txt` file from this repository.
+3. Run the following command to install all dependencies (including Jupyter for running notebooks):
     ```bash
-    pip install -r requirements.txt
+    pip install -r requirements.txt jupyterlab
     ```
 
 ---
