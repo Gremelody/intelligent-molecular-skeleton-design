@@ -372,7 +372,7 @@ This method is the most robust approach to maximize the likelihood of reproducin
 
 ---
 
-### 🥈 Option 2: Cross-Platform Setup (via `environment.yml`) 
+### 🥈 Option 2: Cross-Platform Setup (via `environment.yml`)
 
 This method is recommended for general users who wish to run the code on different operating systems (e.g., Linux, macOS). It uses the `environment.yml` file to create a functionally equivalent environment but may produce minor numerical differences from the original results.
 
@@ -381,13 +381,13 @@ This method is recommended for general users who wish to run the code on differe
 2.  Download the `environment.yml` file from this repository.
 3.  Execute the following command to create the environment:
     ```bash
-    conda create --name my-project-env --file environment.yml
+    conda env create -f environment.yml -n my-project-env
     ```
 4.  Activate the environment:
     ```bash
     conda activate my-project-env
     ```
-
+    
 ---
 
 ### 🥉 Option 3: Basic Setup (via `requirements.txt`) 
