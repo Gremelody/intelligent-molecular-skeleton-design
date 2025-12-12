@@ -361,11 +361,12 @@ This method is the most robust approach to maximize the likelihood of reproducin
 **Instructions:**
 1. Ensure you have [Conda](https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html) installed.
 2. Download the `spec-file.txt` file from this repository.
-3. Execute the following command in your terminal (Anaconda Prompt) to create the environment:
+3. Open your terminal (or Anaconda Prompt) and navigate to the directory where you saved the file.
+4. Execute the following command to create the environment:
     ```bash
     conda create --name my-project-env --file spec-file.txt
     ```
-4. Activate the newly created environment:
+5. Activate the newly created environment:
     ```bash
     conda activate my-project-env
     ```
@@ -379,11 +380,12 @@ This method is recommended for general users who wish to run the code on differe
 **Instructions:**
 1. Ensure you have [Conda](https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html) installed.
 2. Download the `environment.yml` file from this repository.
-3. Execute the following command to create the environment:
+3. Open your terminal (or Anaconda Prompt) and navigate to the directory where you saved the file.
+4. Execute the following command to create the environment:
     ```bash
     conda env create -f environment.yml -n my-project-env
     ```
-4. Activate the environment:
+5. Activate the environment:
     ```bash
     conda activate my-project-env
     ```
@@ -395,7 +397,9 @@ This method is recommended for general users who wish to run the code on differe
 This option is provided for users who prefer to work with standard Python virtual environments (`venv`) and `pip`. This method also does not ensure exact numerical reproducibility.
 
 **Instructions:**
-1. It is recommended to first create and activate a Python virtual environment:
+1. Download the `requirements.txt` file from this repository.
+2. Open your terminal and navigate to the directory where you saved the file.
+3. Create and activate a Python virtual environment:
     ```bash
     python -m venv venv
     # On Windows, activate with:
@@ -403,8 +407,7 @@ This option is provided for users who prefer to work with standard Python virtua
     # On Linux/macOS, activate with:
     # source venv/bin/activate
     ```
-2. Download the `requirements.txt` file from this repository.
-3. Run the following command to install all dependencies (including Jupyter for running notebooks):
+4. Run the following command to install all dependencies (including Jupyter for running notebooks):
     ```bash
     pip install -r requirements.txt jupyterlab
     ```
